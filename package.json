@@ -1,12 +1,22 @@
 {
   "name": "reactjs-ethereum-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Reactjs, typescript and Hardhat starter code for building ethereum dapps",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "chain": "npm workspace reactjs-ethereum-starter-hardhat chain",
+    "deploy": "npm workspace reactjs-ethereum-starter-hardhat deploy",
+    "compile": "npm workspace reactjs-ethereum-starter-hardhat compile"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "reactjs",
+    "typescript",
+    "solidity",
+    "hardhat",
+    "template",
+    "dapp",
+    "ethereum",
+    "rainbowkit"
+  ],
+  "author": "@oloyedeshadrach",
+  "license": "MIT"
 }
