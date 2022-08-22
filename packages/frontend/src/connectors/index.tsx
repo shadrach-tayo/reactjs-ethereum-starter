@@ -1,31 +1,29 @@
-import { createClient } from "wagmi";
-import { configureChains } from "wagmi";
-import { chain } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
-import {
-  getDefaultWallets,
-} from "@rainbow-me/rainbowkit";
-import AvaxLogo from "../avax.svg";
+import { createClient } from 'wagmi';
+import { configureChains } from 'wagmi';
+import { chain } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import AvaxLogo from '../avax.svg';
 
 const avalancheChain = {
   id: 43_114,
-  name: "Avalanche",
-  network: "avalanche",
+  name: 'Avalanche',
+  network: 'avalanche',
   iconUrl: AvaxLogo,
-  iconBackground: "#fff",
+  iconBackground: '#fff',
   nativeCurrency: {
     decimals: 18,
-    name: "Avalanche",
-    symbol: "AVAX",
+    name: 'Avalanche',
+    symbol: 'AVAX'
   },
   rpcUrls: {
-    default: "https://api.avax.network/ext/bc/C/rpc",
+    default: 'https://api.avax.network/ext/bc/C/rpc'
   },
   blockExplorers: {
-    default: { name: "SnowTrace", url: "https://snowtrace.io" },
-    etherscan: { name: "SnowTrace", url: "https://snowtrace.io" },
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' }
   },
-  testnet: false,
+  testnet: false
 };
 
 export const { chains, provider } = configureChains(
@@ -34,12 +32,12 @@ export const { chains, provider } = configureChains(
 );
 
 export const { connectors } = getDefaultWallets({
-  appName: "Rainbowkit-Wagmi-Demo-React",
-  chains,
+  appName: 'Rainbowkit-Wagmi-Demo-React',
+  chains
 });
 
 export const client = createClient({
   autoConnect: true,
   connectors,
-  provider,
+  provider
 });

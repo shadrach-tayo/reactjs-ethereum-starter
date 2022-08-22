@@ -10,59 +10,47 @@ import type {
   Overrides,
   PopulatedTransaction,
   Signer,
-  utils,
-} from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
+  utils
+} from 'ethers';
+import type { FunctionFragment, Result, EventFragment } from '@ethersproject/abi';
+import type { Listener, Provider } from '@ethersproject/providers';
 import type {
   TypedEventFilter,
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
-} from "./common";
+  PromiseOrValue
+} from './common';
 
 export interface LockInterface extends utils.Interface {
   functions: {
-    "owner()": FunctionFragment;
-    "unlockTime()": FunctionFragment;
-    "withdraw()": FunctionFragment;
+    'owner()': FunctionFragment;
+    'unlockTime()': FunctionFragment;
+    'withdraw()': FunctionFragment;
   };
 
-  getFunction(
-    nameOrSignatureOrTopic: "owner" | "unlockTime" | "withdraw"
-  ): FunctionFragment;
+  getFunction(nameOrSignatureOrTopic: 'owner' | 'unlockTime' | 'withdraw'): FunctionFragment;
 
-  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "unlockTime",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'unlockTime', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'withdraw', values?: undefined): string;
 
-  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "unlockTime", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'unlockTime', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'withdraw', data: BytesLike): Result;
 
   events: {
-    "Withdrawal(uint256,uint256)": EventFragment;
+    'Withdrawal(uint256,uint256)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "Withdrawal"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Withdrawal'): EventFragment;
 }
 
 export interface WithdrawalEventObject {
   amount: BigNumber;
   when: BigNumber;
 }
-export type WithdrawalEvent = TypedEvent<
-  [BigNumber, BigNumber],
-  WithdrawalEventObject
->;
+export type WithdrawalEvent = TypedEvent<[BigNumber, BigNumber], WithdrawalEventObject>;
 
 export type WithdrawalEventFilter = TypedEventFilter<WithdrawalEvent>;
 
@@ -83,9 +71,7 @@ export interface Lock extends BaseContract {
     eventFilter?: TypedEventFilter<TEvent>
   ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -106,9 +92,7 @@ export interface Lock extends BaseContract {
 
   unlockTime(overrides?: CallOverrides): Promise<BigNumber>;
 
-  withdraw(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  withdraw(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
   callStatic: {
     owner(overrides?: CallOverrides): Promise<string>;
@@ -119,10 +103,7 @@ export interface Lock extends BaseContract {
   };
 
   filters: {
-    "Withdrawal(uint256,uint256)"(
-      amount?: null,
-      when?: null
-    ): WithdrawalEventFilter;
+    'Withdrawal(uint256,uint256)'(amount?: null, when?: null): WithdrawalEventFilter;
     Withdrawal(amount?: null, when?: null): WithdrawalEventFilter;
   };
 
@@ -131,9 +112,7 @@ export interface Lock extends BaseContract {
 
     unlockTime(overrides?: CallOverrides): Promise<BigNumber>;
 
-    withdraw(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    withdraw(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<BigNumber>;
   };
 
   populateTransaction: {
