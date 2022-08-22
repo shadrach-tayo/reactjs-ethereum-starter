@@ -1,11 +1,13 @@
 {
   "name": "reactjs-ethereum-starter-hardhat",
+  "private": true,
   "version": "1.0.0",
   "author": "@oloyedeshadrach",
   "license": "MIT",
   "scripts": {
     "chain": "npx hardhat node",
     "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
     "deploy": "npx hardhat run scripts/deploy.ts --network localhost"
   },
   "devDependencies": {
