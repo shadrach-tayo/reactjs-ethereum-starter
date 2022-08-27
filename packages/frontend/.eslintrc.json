@@ -1,14 +1,14 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
+    "es6": true,
     "jest": true,
     "node": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "overrides": [],
@@ -38,7 +38,7 @@
     "no-console": [
       2,
       {
-        "allow": ["warn", "error"]
+        "allow": ["warn", "error", ""]
       }
     ]
   },
